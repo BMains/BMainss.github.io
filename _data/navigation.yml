@@ -5,7 +5,7 @@ main:
   - title: "Data Projects"
     url: /data-projects/
   - title: "Machine Learning"
-  - url: /machine-learning/
+    url: /machine-learning/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
