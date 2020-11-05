@@ -1,7 +1,7 @@
 ---
 layout: posts
-permalink: /data-project/
-title: "Data project"
+permalink: /data-projects/
+title: "Data-Projects"
 author_profile: true
 header:
   image: "/images/fort point.png"
