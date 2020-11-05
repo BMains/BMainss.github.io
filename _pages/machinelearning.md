@@ -1,10 +1,11 @@
 ---
 layout: posts
-permalink: /data-projects/
-title: "Data Projects"
+permalink: /machine-learning/
+title: "machine Learning"
 author_profile: true
 header:
   image: "/images/fort point.png"
 ---
+
 
 
