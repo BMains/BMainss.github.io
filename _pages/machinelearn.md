@@ -1,4 +1,5 @@
 ---
+layout: posts
 permalink: /data-projects/
 title: "Data Projects"
 author_profile: true
@@ -8,3 +9,5 @@ header:
 
 
 Today is a good day
+
+### Linear Regression
