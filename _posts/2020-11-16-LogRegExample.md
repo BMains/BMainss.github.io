@@ -1,3 +1,15 @@
+---
+title: "Logistic Regression with Apache Spark"
+date: 2020-11-16
+tags: [Carriege return, data science, messy data]
+header:
+  image: "/images/perceptron/percept.jpg"
+excerpt: "Carriage returns, Data Science, Messy Data"
+mathjax: "true"
+---
+
+Logistic regression on a
+
 ```python
 import findspark
 findspark.init('/home/ubuntu/spark-3.0.1-bin-hadoop2.7')
