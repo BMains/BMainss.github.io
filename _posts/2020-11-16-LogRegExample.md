@@ -8,7 +8,10 @@ excerpt: "Carriage returns, Data Science, Messy Data"
 mathjax: "true"
 ---
 
-Logistic regression on a
+A brief introduction to Apache Spark.It's a lightning fast tool used for big data processing,sql,streaming,machine learning and graph processing.
+
+Spark is usually very troublesome when it comes to using small datasets but this particular version of spark is in a small free trial cluster in an AWS EC2 instance
+
 
 ```python
 import findspark
