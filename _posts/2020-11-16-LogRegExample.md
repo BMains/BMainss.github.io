@@ -16,8 +16,11 @@ Spark is usually very troublesome when it comes to using small datasets but this
 ## Load Data
 
 In this section we load the data,similar to pandas when reading from a csv format
+
 ***findspark***- This allows you to call on Spark as if it were a regular library,since spark itself isnt on the sys.path by default.Also note that findspark can be configured to edit the bashrc configuration file and set the environment variables permanently and only run the files once.
+
 ***InferSchema***-This automtically predicts the data type for each column.
+
 ***SparkSession***-SparkSession allows for creating a DataFrame,creating a Dataset, accessing the Spark SQL services.Which then allows us to import ***LogisticRegression***
 
 ```python
