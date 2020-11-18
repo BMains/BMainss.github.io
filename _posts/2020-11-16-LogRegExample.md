@@ -13,6 +13,13 @@ A brief introduction to Apache Spark.It's a lightning fast tool used for big dat
 Spark is usually very troublesome when it comes to using small datasets but this particular version of spark is in a small free trial cluster in an AWS EC2 instance
 
 
+## Load Data
+
+In this section we load the data,similar to pandas when reading from a csv format
+***findspark***- This allows you to call on Spark as if it were a regular library,since spark itself isnt on the sys.path by default.Also note that findspark can be configured to edit the bashrc configuration file and set the environment variables permanently and only run the files once.
+***InferSchema***-This automtically predicts the data type for each column.
+***SparkSession***-SparkSession allows for creating a DataFrame,creating a Dataset, accessing the Spark SQL services.Which then allows us to import ***LogisticRegression***
+
 ```python
 import findspark
 findspark.init('/home/ubuntu/spark-3.0.1-bin-hadoop2.7')
