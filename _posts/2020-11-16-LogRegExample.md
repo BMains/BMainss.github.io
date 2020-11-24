@@ -1,23 +1,23 @@
 ---
 title: "Logistic Regression with Apache Spark"
-date: 2020-11-16
-tags: [Carriege return, data science, messy data]
+date: 2020-09-16
+tags: [Logistic Regression, Machine Learning, Spark]
 header:
   image: "/images/perceptron/percept.jpg"
-excerpt: "Carriage returns, Data Science, Messy Data"
+excerpt: "Logistic Regression, Machine Learning, Spark"
 mathjax: "true"
 ---
 
 A brief introduction to Apache Spark.It's a lightning fast tool used for big data processing,sql,streaming,machine learning and graph processing.
 
-Spark is usually very troublesome when it comes to using small datasets but this particular version of spark is in a small free trial cluster in an AWS EC2 instance
+Spark is usually very troublesome when it comes to using small datasets but this particular version of spark is in a small free trial cluster in an AWS EC2 instance so we shouldn't worry too much about it.
 
 
 ## Load Data
 
 In this section we load the data,similar to pandas when reading from a csv format
 
-***findspark***- This allows you to call on Spark as if it were a regular library,since spark itself isnt on the sys.path by default.Also note that findspark can be configured to edit the bashrc configuration file and set the environment variables permanently and only run the files once.
+***Findspark***- This allows you to call on Spark as if it were a regular library,since spark itself isnt on the sys.path by default.Also note that findspark can be configured to edit the bashrc configuration file and set the environment variables permanently and only run the files once.
 
 ***InferSchema***-This automtically predicts the data type for each column.
 
@@ -31,11 +31,27 @@ from pyspark.ml.classification import LogisticRegression
 spark = SparkSession.builder.appName('Mylogregexcer').getOrCreate()
 df = spark.read.csv('titanic.csv',inferSchema = True,header = True)
 ```
+***PrintSchema***-Shows the data types for each column.Also shows which columns allows nulls.
 
+hows all the column names,below is the data dictionary
+
+| Variable    | Definition                                 | Key                                            |
+|-------------|--------------------------------------------|------------------------------------------------|
+| PassengerId | IdentityID                                 |                                                |
+| survival    | Survival                                   | 0 = No, 1 = Yes                                |
+| pclass      | Ticket class                               | 1 = 1st, 2 = 2nd, 3 = 3rd                      |
+| sex         | Sex                                        |                                                |
+| Name        | Name of Passenger                          |                                                |
+| Age         | Age in years                               |                                                |
+| sibsp       | # of siblings / spouses aboard the Titanic |                                                |
+| parch       | # of parents / children aboard the Titanic |                                                |
+| ticket      | Ticket number                              |                                                |
+| fare        | Passenger fare                             |                                                |
+| cabin       | Cabin number                               |                                                |
+| embarked    | Port of Embarkation                        | C = Cherbourg, Q = Queenstown, S = Southampton |
 
 ```python
 df.printSchema()
-```
 
     root
      |-- PassengerId: integer (nullable = true)
@@ -51,15 +67,7 @@ df.printSchema()
      |-- Cabin: string (nullable = true)
      |-- Embarked: string (nullable = true)
     
-    
-
-
-```python
-df.columns
-```
-
-
-
+    df.columns
 
     ['PassengerId',
      'Survived',
@@ -75,7 +83,10 @@ df.columns
      'Embarked']
 
 
+```
 
+In this section,only the usefull columns are selected from the dataframe and drop any rows with null values.
+(Note: This is a very extreme way of dealing with missing data.The best practice would be fill in the data in some sort of fashion)
 
 ```python
 my_cols = df.select(['Survived',
@@ -87,28 +98,24 @@ my_cols = df.select(['Survived',
  'Ticket',
  'Fare',
  'Embarked'])
-```
 
+ my_final_data = my_cols.na.drop()
 
-```python
-my_final_data = my_cols.na.drop()
 ```
+Next,we need to convert columns that have string into numerical values.For example,the sex column only has two values (M and F).
+**stringindexer** will change it into 0 and 1,since it's  nominal data.**OneHotEncoder** converts the string into a vector [example](https://www.geeksforgeeks.org/ml-one-hot-encoding-of-datasets-in-python/) . After converting the Sex column,we do the same for the Embark column.
+
 
 
 ```python
 from pyspark.ml.feature import (VectorAssembler,VectorIndexer,OneHotEncoder,StringIndexer)
-```
 
-
-```python
 gender_indexer = StringIndexer(inputCol="Sex",outputCol='SexIndex')
 gender_encoder = OneHotEncoder(inputCol="SexIndex",outputCol="SexVec")
-```
 
-
-```python
 embark_indexer = StringIndexer(inputCol='Embarked',outputCol='EmbarkIndex')
 embark_encoder = OneHotEncoder(inputCol='EmbarkIndex',outputCol='EmbarkVec')
+
 ```
 
 
