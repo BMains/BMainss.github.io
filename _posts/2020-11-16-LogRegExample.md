@@ -31,9 +31,9 @@ from pyspark.ml.classification import LogisticRegression
 spark = SparkSession.builder.appName('Mylogregexcer').getOrCreate()
 df = spark.read.csv('titanic.csv',inferSchema = True,header = True)
 ```
-***PrintSchema***-Shows the data types for each column.Also shows which columns allows nulls.
+## Data Dictinoary
 
-hows all the column names,below is the data dictionary
+Data Dictionary with all the column names
 
 | Variable    | Definition                                 | Key                                            |
 |-------------|--------------------------------------------|------------------------------------------------|
@@ -49,6 +49,8 @@ hows all the column names,below is the data dictionary
 | fare        | Passenger fare                             |                                                |
 | cabin       | Cabin number                               |                                                |
 | embarked    | Port of Embarkation                        | C = Cherbourg, Q = Queenstown, S = Southampton |
+
+***PrintSchema***-Shows the data types for each column
 
 ```python
 df.printSchema()
@@ -84,6 +86,7 @@ df.printSchema()
 
 
 ```
+## Drop missing data
 
 In this section,only the usefull columns are selected from the dataframe and drop any rows with null values.
 (Note: This is a very extreme way of dealing with missing data.The best practice would be fill in the data in some sort of fashion)
