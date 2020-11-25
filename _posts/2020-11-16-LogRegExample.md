@@ -91,7 +91,7 @@ df.printSchema()
 In this section,only the useful columns are selected from the dataframe and drop any rows with null values.
 (Note: This is a very extreme way of dealing with missing data.The best practice would be fill in the data in some sort of fashion)
 
-```pythona
+```python
 my_cols = df.select(['Survived',
  'Pclass',
  'Sex',
@@ -126,7 +126,7 @@ embark_encoder = OneHotEncoder(inputCol='EmbarkIndex',outputCol='EmbarkVec')
 
 ## VectorAssembler
 
-converts the columns into vectors,allows our model to use categorical data
+Converts the columns into vectors,allows our model to use categorical data
 
 ```python
 assembler = VectorAssembler (inputCols=['Pclass','SexVec','EmbarkVec','Age','SibSp','Parch','Fare'],
@@ -136,7 +136,9 @@ In this section we use Logistic regression to input our data.Features are the in
 
 ## Pipeline
 
-This sets our steps into stages.Normally, I wouldn't use it in a Logistic regression because not all the data you are modeling will need the same steps.However,it's quite useful to use on data that consistently has the same schema,[Here is an example](https://www.analyticsvidhya.com/blog/2019/11/build-machine-learning-pipelines-pyspark/)
+This sets our steps into stages.Normally, I wouldn't use it in a Logistic regression because not all the data you are modeling will need the same steps.
+
+However,it's quite useful to use on data that consistently has the same schema,[Here is an example](https://www.analyticsvidhya.com/blog/2019/11/build-machine-learning-pipelines-pyspark/)
 
 
 ```python
@@ -161,19 +163,12 @@ results = fit_model.transform(test_data)
 
 ```python
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
-```
 
-
-```python
 my_eval = BinaryClassificationEvaluator(rawPredictionCol = 'prediction',labelCol='Survived')
-```
 
-
-```python
 results.select('Survived','prediction').show()
-```
 
-    +--------+----------+
++--------+----------+
     |Survived|prediction|
     +--------+----------+
     |       0|       1.0|
@@ -198,7 +193,19 @@ results.select('Survived','prediction').show()
     |       0|       0.0|
     +--------+----------+
     only showing top 20 rows
-    
+
+    AUC = my_eval.evaluate(results)
+
+
+    AUC
+
+
+     0.766553480475382
+
+```
+
+
+
     
 
 
