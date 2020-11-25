@@ -128,17 +128,18 @@ embark_encoder = OneHotEncoder(inputCol='EmbarkIndex',outputCol='EmbarkVec')
 
 Converts the columns into vectors,allows our model to use categorical data
 
+In this section we use Logistic regression to input our data.Features are the independent variables,while Survived is the dependent variable
+
 ```python
 assembler = VectorAssembler (inputCols=['Pclass','SexVec','EmbarkVec','Age','SibSp','Parch','Fare'],
                             outputCol = 'features')
 ```
-In this section we use Logistic regression to input our data.Features are the independent variables,while Survived is the dependent variable
 
 ## Pipeline
 
 This sets our steps into stages.Normally, I wouldn't use it in a Logistic regression because not all the data you are modeling will need the same steps.
 
-However,it's quite useful to use on data that consistently has the same schema,[Here is an example](https://www.analyticsvidhya.com/blog/2019/11/build-machine-learning-pipelines-pyspark/)
+However,it's quite useful to use on data that consistently has the same schema,[Here is an example](https://www.analyticsvidhya.com/blog/2019/11/build-machine-learning-pipelines-pyspark/){:target="_blank"}
 
 
 ```python
@@ -160,6 +161,7 @@ results = fit_model.transform(test_data)
 
 
 ```
+
 
 ```python
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
@@ -201,31 +203,5 @@ results.select('Survived','prediction').show()
 
 
      0.766553480475382
-
-```
-
-
-
-    
-
-
-```python
-AUC = my_eval.evaluate(results)
-```
-
-
-```python
-AUC
-```
-
-
-
-
-    0.766553480475382
-
-
-
-
-```python
 
 ```
