@@ -108,9 +108,9 @@ my_cols = df.select(['Survived',
 ## Transform Categorical data to numeric values
 Next,we need to convert columns that have string into numerical values.For example,the sex column only has two values (M and F).
 
-**stringindexer** will change it into 0 and 1,since it's  nominal data.
+**Stringindexer**- It assigns a unique integer value to each category. 0 is assigned to the most frequent category, 1 to the next most frequent value, and so on. (M and F,will turn to 0 and 1)
 
-**OneHotEncoder** converts the string into a vector.[Here is an example](https://www.geeksforgeeks.org/ml-one-hot-encoding-of-datasets-in-python/) . After converting the Sex column,we do the same for the Embark column.
+**OneHotEncoder**- converts the string into a vector.[Here is an example](https://www.geeksforgeeks.org/ml-one-hot-encoding-of-datasets-in-python/) . After converting the Sex column,we do the same for the Embark column.
 
 
 ```python
@@ -124,46 +124,40 @@ embark_encoder = OneHotEncoder(inputCol='EmbarkIndex',outputCol='EmbarkVec')
 
 ```
 
-**VectorAssembler** - converts the columns into vectors,allows our model to use categorical data
+## VectorAssembler
+
+converts the columns into vectors,allows our model to use categorical data
 
 ```python
 assembler = VectorAssembler (inputCols=['Pclass','SexVec','EmbarkVec','Age','SibSp','Parch','Fare'],
                             outputCol = 'features')
 ```
+In this section we use Logistic regression to input our data.Features are the independent variables,while Survived is the dependent variable
+
+## Pipeline
+
+This sets our steps into stages.Normally, I wouldn't use it in a Logistic regression because not all the data you are modeling will need the same steps.However,it's quite useful to use on data that consistently has the same schema,[Here is an example](https://www.analyticsvidhya.com/blog/2019/11/build-machine-learning-pipelines-pyspark/)
 
 
 ```python
-from pyspark.ml.classification import LogisticRegression
 from pyspark.ml import Pipeline
-```
 
-
-```python
 log_reg_titanic = LogisticRegression(featuresCol='features',labelCol='Survived')
-```
 
-
-```python
 pipeline = Pipeline(stages=[gender_indexer,embark_indexer,
                            gender_encoder,embark_encoder,
                            assembler,log_reg_titanic])
-```
 
+train_data , test_data = my_final_data.randomSplit([0.7,0.3])  
 
-```python
-train_data , test_data = my_final_data.randomSplit([0.7,0.3])
-```
+# Fit the pipeline model and transform the data as defined
 
-
-```python
 fit_model = pipeline.fit(train_data)
-```
 
-
-```python
 results = fit_model.transform(test_data)
-```
 
+
+```
 
 ```python
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
