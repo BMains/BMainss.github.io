@@ -8,7 +8,7 @@ excerpt: "Logistic Regression, Machine Learning, Spark"
 mathjax: "true"
 ---
 
-A brief introduction to Apache Spark,It's a lightning fast tool used for big data processing,sql,streaming,machine learning and graph processing.
+A brief introduction to Apache Spark,It's a lightning fast tool used for big data processing,SQL,streaming,machine learning and graph processing.
 
 Spark is usually very troublesome when it comes to using small datasets but this particular version of spark is in a small free trial cluster in an AWS EC2 instance so we shouldn't worry too much about it.
 
@@ -106,11 +106,11 @@ my_cols = df.select(['Survived',
 
 ```
 ## Transform Categorical data to numeric values
-Next,we need to convert columns that have string into numerical values.For example,the sex column only has two values (M and F).
+Next,we need to convert columns that have strings into numerical values.For example,the sex column only has two values (M and F).
 
 **Stringindexer**- It assigns a unique integer value to each category. 0 is assigned to the most frequent category, 1 to the next most frequent value, and so on. (M and F,will turn to 0 and 1)
 
-**OneHotEncoder**- converts the string into a vector.[Here is an example](https://www.geeksforgeeks.org/ml-one-hot-encoding-of-datasets-in-python/) . After converting the Sex column,we do the same for the Embark column.
+**OneHotEncoder**- converts the string into a vector.[Here is an example](https://www.geeksforgeeks.org/ml-one-hot-encoding-of-datasets-in-python/){:target="_blank"} . After converting the Sex column,we do the same for the Embark column.
 
 
 ```python
@@ -128,7 +128,7 @@ embark_encoder = OneHotEncoder(inputCol='EmbarkIndex',outputCol='EmbarkVec')
 
 Converts the columns into vectors,allows our model to use categorical data
 
-In this section we use Logistic regression to input our data.Features are the independent variables,while Survived is the dependent variable
+In this section we use logistic regression to input our data.Features are the independent variables,while survived is the dependent variable
 
 ```python
 assembler = VectorAssembler (inputCols=['Pclass','SexVec','EmbarkVec','Age','SibSp','Parch','Fare'],
