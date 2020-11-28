@@ -1,11 +1,11 @@
 ---
-title: "Logistic Regression with Apache Spark"
+title: "Logistic Regression"
 date: 2020-09-16
-tags: [Logistic Regression, Machine Learning, Spark]
+# tags: [Logistic Regression, Machine Learning, Spark]
 header:
   image: "/images/perceptron/percept.jpg"
   teaser: "/images/perceptron/percept.jpg"
-excerpt: "Logistic Regression, Machine Learning, Spark"
+excerpt: "Logistic Regression with PySpark"
 mathjax: "true"
 ---
 

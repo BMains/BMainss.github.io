@@ -2,7 +2,7 @@
 title: "Logistic Regression with Apache Spark"
 header:
   image: "/images/perceptron/percept.jpg"
-  teaser: "/images/perceptron/percept.jpg"
+  teaser: "/images/LogisticRegressionOutputs-01.jpg"
 excerpt: "Logistic Regression, Machine Learning, Spark"
 mathjax: "true"
 ---
