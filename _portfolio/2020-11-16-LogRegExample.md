@@ -1,7 +1,5 @@
 ---
 title: "Logistic Regression with Apache Spark"
-date: 2020-09-16
-tags: [Logistic Regression, Machine Learning, Spark]
 header:
   image: "/images/perceptron/percept.jpg"
   teaser: "/images/perceptron/percept.jpg"
