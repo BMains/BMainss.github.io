@@ -3,7 +3,7 @@ title: "Logistic Regression"
 excerpt: "Logistic Regression with PySpark"
 header:
   image: "/images/perceptron/percept.jpg"
-  teaser: "/images/LogisticRegressionOutputs-01.png"
+  teaser: "/images/Sunset-Skyline-Header-Image.-Courtesty-Austin-Convention-Visitors-Bureau-Credit-Geoff-Duncan_exp-May-2020.jpg"
 mathjax: "true"
 ---
 
