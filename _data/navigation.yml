@@ -4,11 +4,13 @@ main:
     url: /about/
   - title: "Data Projects"
     url: /data-projects/
-  - title: "Machine Learning"
-    url: /machine-learning/
+  - title: "Workshop"
+    url: /work-shop/
+  - title: "Sample Collections"
+    url: /collection-archive/
   # - title: "Sample Posts"
   #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
+   # title: "Sample Collections"
+    #url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
