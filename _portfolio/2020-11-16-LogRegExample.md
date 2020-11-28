@@ -1,9 +1,9 @@
 ---
-title: "Logistic Regression with Apache Spark"
+title: "Logistic Regression"
+excerpt: "Logistic Regression with PySpark"
 header:
   image: "/images/perceptron/percept.jpg"
   teaser: "/images/LogisticRegressionOutputs-01.png"
-excerpt: "Logistic Regression, Machine Learning, Spark"
 mathjax: "true"
 ---
 

@@ -2,11 +2,11 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Data Projects"
-    url: /data-projects/
+  #- title: "Data Projects"
+    #url: /data-projects/
   - title: "Workshop"
     url: /work-shop/
-  - title: "Sample Collections"
+  - title: "Data Projects"
     url: /portfolio/
   # - title: "Sample Posts"
   #   url: /year-archive/
