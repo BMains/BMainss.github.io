@@ -4,10 +4,10 @@ main:
     url: /about/
   #- title: "Data Projects"
     #url: /data-projects/
-  - title: "Workshop"
-    url: /work-shop/
   - title: "Data Projects"
     url: /portfolio/
+  - title: "Workshop"
+    url: /work-shop/
   # - title: "Sample Posts"
   #   url: /year-archive/
    # title: "Sample Collections"
